@@ -9,10 +9,14 @@
 """
     
 import sys
+import math
 from time import time
 sys.path.append("../tools/")
 from email_preprocess import preprocess
-
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+import numpy as np
+import scipy.stats
 
 ### features_train and features_test are the features for the training
 ### and testing datasets, respectively
@@ -20,12 +24,20 @@ from email_preprocess import preprocess
 features_train, features_test, labels_train, labels_test = preprocess()
 
 
-
-
 #########################################################
-### your code goes here ###
+# classifier = DecisionTreeClassifier(random_state=0, min_samples_split=2)
+# classifier.fit(features_train, labels_train)
+# predictions = classifier.predict(features_test)
+# print(accuracy_score(labels_test, predictions))
 
-
+classifier = DecisionTreeClassifier(random_state=0, min_samples_split=40)
+classifier.fit(features_train, labels_train)
+predictions = classifier.predict(features_test)
+accuracy = accuracy_score(labels_test, predictions)
 #########################################################
+
+num_features = len(features_train[0])
+
+#print scipy.stats.entropy([2,1], base=2)
 
 
