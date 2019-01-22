@@ -37,7 +37,7 @@ Discrete vs. Continuous
 Decision Boundary vs. Best Fit Line
 Accuracy vs. Sum of Squares/R^2 to determine accuracy
 
-# Lesson 8 ; Outliers
+# Lesson 8 : Outliers
 
 # Lesson 9 : Unsupervised Learning
 Data is unlabeled
@@ -46,3 +46,29 @@ Data is unlabeled
    * K-means is most common
  * Dimensionality Reduction
  
+# Lesson 10
+https://scikit-learn.org/stable/modules/preprocessing.html
+https://scikit-learn.org/stable/modules/preprocessing.html#scaling-features-to-a-range
+
+* Key is you need a numpy array
+* Scaling only affects algorithms in which > 1 dimension are compared
+  * Tip - if only horizontal and vertical lines split the data only one dimension is used so scaling doesn't matter
+  
+# Lesson 11 : Learning from text
+Bag of Words - A frequency count of words 
+Stop words (A, and, of,...) are often removed
+Generally just word stems are used (e.g. love in loves)
+
+```python
+# stopwords
+from nltk.corpus import stopwords
+len(stopwords.words('english'))
+
+# Stemming
+from nltk.stem.snowball import SnowballStemmer
+stemmer = SnowballStemmer("english")
+
+# TF/IDF : Term frequency, inverse document frequency
+
+```
+
