@@ -36,3 +36,13 @@ Classification vs. Regression
 Discrete vs. Continuous
 Decision Boundary vs. Best Fit Line
 Accuracy vs. Sum of Squares/R^2 to determine accuracy
+
+# Lesson 8 ; Outliers
+
+# Lesson 9 : Unsupervised Learning
+Data is unlabeled
+
+ * Clustering
+   * K-means is most common
+ * Dimensionality Reduction
+ 
