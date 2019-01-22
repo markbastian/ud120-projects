@@ -72,3 +72,5 @@ stemmer = SnowballStemmer("english")
 
 ```
 
+## Nano notes
+* ML is teaching computers to learn from past experiences
