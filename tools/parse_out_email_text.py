@@ -3,6 +3,7 @@
 from nltk.stem.snowball import SnowballStemmer
 import string
 
+
 def parseOutText(f):
     """ given an opened email file f, parse out all text below the
         metadata block at the top
@@ -16,7 +17,6 @@ def parseOutText(f):
 
         """
 
-
     stemmer = SnowballStemmer("english")
 
     f.seek(0)  ### go back to beginning of file (annoying)
@@ -24,8 +24,7 @@ def parseOutText(f):
 
     ### split off metadata
     content = all_text.split("X-FileName:")
-    # words = []
-    words = ""
+    words_array = []
 
     if len(content) > 1:
         ### remove punctuation
@@ -34,14 +33,21 @@ def parseOutText(f):
         ### project part 2: comment out the line below
         # words = text_string
 
+        # bad_words = {"sara", "shackleton", "chris", "germani"}
         ### split the text string into individual words, stem each word,
         ### and append the stemmed word to words (make sure there's a single
         ### space between each stemmed word)
+        # for word in text_string.split():
+        #     stem = stemmer.stem(word)
+        #     if stem not in bad_words:
+        #         words_array.append(stem)
         for word in text_string.split():
-            words = words + " " + word
-            # words.append( stemmer.stem(word))
+            stem = stemmer.stem(word)
+            words_array.append(stem)
 
-    return words # string.join(words, ' ')
+    words_a = string.join(words_array, ' ')
+
+    return str(words_a)
 
 
 def main():
@@ -50,7 +56,5 @@ def main():
     print text
 
 
-
 if __name__ == '__main__':
     main()
-

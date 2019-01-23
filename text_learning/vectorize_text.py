@@ -36,6 +36,7 @@ word_data = []
 ### can iterate your modifications quicker
 temp_counter = 0
 
+import re
 
 for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
     for path in from_person:
@@ -44,7 +45,7 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
         # temp_counter += 1
         if temp_counter < 200:
             path = os.path.join('..', path[:-1])
-            print path
+            # print path
             email = open(path, "r")
 
             ### use parseOutText to extract the text from the opened email
@@ -52,13 +53,15 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
             words = parseOutText(email)
 
             ### use str.replace() to remove any instances of the words
-            ### ["sara", "shackleton", "chris", "germani"]
-            for w in ["sara", "shackleton", "chris", "germani"]:
-                words = words.replace(w, " ")
+            #Replacing with ' ' vs. '' is the secret. Ugh!!
+            for word in ["sara", "shackleton", "chris", "germani"]:
+                words = words.replace(word, '')
+
+            #Just removes these 4 words, which makes our words go from 38825 to 38821 which makes sense in a sane world
+            #words = re.sub(r'\bsara\b|\bshackleton\b|\bchris\b|\bgermani\b', '', words)
 
             ### append the text to word_data
-            word_data.append(str.replace(words, "  ", " "))
-            # word_data.append(words)
+            word_data.append(words)
 
             ### append a 0 to from_data if email is from Sara, and 1 if email is from Chris
             if name == 'sara':
@@ -79,4 +82,10 @@ pickle.dump( from_data, open("your_email_authors.pkl", "w") )
 from sklearn.feature_extraction.text import TfidfVectorizer
 vectorizer = TfidfVectorizer(stop_words='english')
 X = vectorizer.fit_transform(word_data)
-len(vectorizer.get_feature_names())
+num_features = len(vectorizer.get_feature_names())
+#38825 with no word replacement - based on the hint I think it's a regex thing
+#
+#not 38755, 38821, 38825, 44994
+#38825 gets me very close I think. 'Did you remember to actually change the messages after performing the replacements'
+print(num_features)
+
