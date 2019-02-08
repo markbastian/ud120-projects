@@ -54,7 +54,7 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
 
             ### use str.replace() to remove any instances of the words
             #Replacing with ' ' vs. '' is the secret. Ugh!!
-            for word in ["sara", "shackleton", "chris", "germani"]:
+            for word in ["sara", "shackleton", "chris", "germani", "sshacklensf", "cgermannsf"]:
                 words = words.replace(word, '')
 
             #Just removes these 4 words, which makes our words go from 38825 to 38821 which makes sense in a sane world
@@ -66,6 +66,7 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
             ### append a 0 to from_data if email is from Sara, and 1 if email is from Chris
             if name == 'sara':
                 from_data.append(0)
+            else:
                 from_data.append(1)
 
             email.close()
@@ -73,6 +74,9 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
 print "emails processed"
 from_sara.close()
 from_chris.close()
+
+print(len(word_data))
+print(len(from_data))
 
 pickle.dump( word_data, open("your_word_data.pkl", "w") )
 pickle.dump( from_data, open("your_email_authors.pkl", "w") )
@@ -87,5 +91,9 @@ num_features = len(vectorizer.get_feature_names())
 #
 #not 38755, 38821, 38825, 44994
 #38825 gets me very close I think. 'Did you remember to actually change the messages after performing the replacements'
+# The correct answer is 38757
 print(num_features)
+
+# 17578
+# 17554
 

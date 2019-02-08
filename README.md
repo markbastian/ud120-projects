@@ -72,5 +72,35 @@ stemmer = SnowballStemmer("english")
 
 ```
 
+# Lesson 12
+
+```python
+# SelectPercentile SelectKBest from sklearn can be used to select the most relevant features
+# They follow the traditional fit/predict model
+```
+
+# Lesson 13 PCA
+
+The faces example is in sklearn
+
+# Lesson 14 Validation
+
+Note that train_test_split is in model_selection in newer APIs and cross_validation in older version
+
+Always fit on training data
+
+transform and predict should use test data for validation, but DO NOT re-fit
+
+[Cross validation](https://classroom.udacity.com/courses/ud120/lessons/2960698751/concepts/29483488390923):
+
+[Problems](https://classroom.udacity.com/courses/ud120/lessons/2960698751/concepts/29483488390923) with splitting data into test and training set:
+* Splitting the data forces you to have smaller data sets (anything in one set shrinks the other)
+* [K-Fold Validation](https://classroom.udacity.com/courses/ud120/lessons/2960698751/concepts/29483488390923):
+  1. Create K folds
+  1. Each fold has 1 test set and K - 1 training sets
+  1. Combine each training set grouping
+  1. You now have K different test-train sets
+  1. Do K trainings and average the results of each
+
 ## Nano notes
 * ML is teaching computers to learn from past experiences
